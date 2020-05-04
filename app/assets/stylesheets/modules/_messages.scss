@@ -9,7 +9,6 @@
 
 .side-bar {
   width: 300px;
-  color: white;
   float: left;
   &__user-name {
     background-color: #253141;
@@ -24,12 +23,21 @@
       display: flex;
       justify-content: space-between;
       font-weight: bold;
+
+      p {
+        color: #fafafa;
+      }
     
       ul {
         display: flex;
       
         li {
           margin-left: 0.3rem;
+          
+          a {
+            text-decoration: none;
+            color: #fafafa;
+          }
         }
       }
     }
@@ -42,12 +50,16 @@
     overflow: scroll;
     &__group {
       padding-bottom: 40px;
-      &__name {
-        font-size: 15px;
-        margin-bottom: 5px;
-      }
-      &__latest-message {
-        font-size: 11px;
+      a {
+          text-decoration: none;
+          color: #fafafa;
+        &__name {
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+        &__latest-message {
+          font-size: 11px;
+        }
       }
     }
   }
@@ -77,6 +89,10 @@
         display: flex;
         font-size: 12px;
         color:#999999;
+
+        li {
+          padding-right: 5px;
+        }
       }
     }
 
@@ -89,6 +105,11 @@
       color: #38aef0;
       position: absolute;
       right: 40px;
+
+      a {
+        text-decoration: none;
+        color: #38aef0;
+      }
     }
   }
 

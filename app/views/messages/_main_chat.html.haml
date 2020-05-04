@@ -2,42 +2,25 @@
   .main-chat__group-info
     .main-chat__group-info__left-box
       %h2.main-chat__group-info__left-box__current-group
-        ginza
+        = @group.name
       %ul.main-chat__group-info__left-box__member-list
-        %li.main-chat__group-info__left-box__member-list__member
-          Member : shuta
+        Member：
+        - @group.users.each do |user|
+          %li.main-chat__group-info__left-box__member-list__member
+            = user.name
     .main-chat__group-info__edit-btn
-      Edit
-  .main-chat__message-list
-    .main-chat__message-list__message
-      .main-chat__message-list__message__info
-        .main-chat__message-list__message__info__upper-info
-          %p.main-chat__message-list__message__info__upper-info__talker
-            shuta
-          %p.main-chat__message-list__message__info__upper-info__date
-            2020/4/29(Wed) 07:00:00
-        .main-chat__message-list__message__info__message-text
-          おはよう！
-      .main-chat__message-list__message__like-btn
-        = icon('fas', 'thumbs-up', class: 'icon')
-    .main-chat__message-list__message
-      .main-chat__message-list__message__info
-        .main-chat__message-list__message__info__upper-info
-          %p.main-chat__message-list__message__info__upper-info__talker
-            shuta
-          %p.main-chat__message-list__message__info__upper-info__date
-            2020/4/29(Wed) 08:00:00
-        .main-chat__message-list__message__info__message-text
-          ハロー！
-      .main-chat__message-list__message__like-btn
-        = icon('fas', 'thumbs-up', class: 'icon')
-  .main-chat__message-form
-    %form.new-message
-      .main-chat__message-form__new-message__input-box
-        %input{type: "text", class:"input-box__text", placeholder: "メッセージを入力して下さい。"}
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "input-box__image__file"}
-      %input{type: "submit", class: "submit-btn"}
+      = link_to edit_group_path(@group.id) do
+        編集
 
-        
+  .main-chat__message-list
+    = render @messages
+
+  .main-chat__message-form
+    = form_for [@group, @message] do |f|
+      %form.new-message
+        .main-chat__message-form__new-message__input-box
+          = f.text_field :content, class: 'input-box__text', placeholder:"メッセージを入力して下さい。"
+          = f.label :image, class: 'input-box__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image,class: "input-box__image__file"
+        %input{type: "submit", class: "submit-btn"}
