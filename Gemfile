@@ -63,4 +63,4 @@ gem 'mini_magick'
 gem 'counter_culture', '~> 2.0'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
-gem "activesupport", ">= 5.2.4.3"
+gem "activesupport", ">= 5.0.7.2"
